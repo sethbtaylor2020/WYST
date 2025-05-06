@@ -1,11 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCWtMp3_vfkI99bNoIM2eAJTla-0ZB35NY",
   authDomain: "wyst-7fe74.firebaseapp.com",
@@ -16,8 +13,10 @@ const firebaseConfig = {
   measurementId: "G-YQ1CYW36WM"
 };
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 
 // Form handler
 document.getElementById("signupForm").addEventListener("submit", async (e) => {
@@ -31,13 +30,14 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
 
 
   try {
-    const docRef = await db.collection("signups").add({
-    name,
-    email,
-    tourTime,
-    checkedIn: false,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    const docRef = await addDoc(collection(db, "signups"), {
+      name,
+      email,
+      tourTime,
+      checkedIn: false,
+      timestamp: serverTimestamp()
     });
+    
     // Generate the QR code for the check-in URL
   const signupId = docRef.id;
   const checkInUrl = `https://wyst-7fe74.web.app/checkin.html?id=${signupId}`;
@@ -60,6 +60,8 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
 
     // Add QR code
     doc.addImage(qrDataUrl, 'PNG', 20, 60, 100, 100);
+    console.log("Generating PDF...");
+
 
     // Trigger download
     doc.save(`${name}-tour-ticket.pdf`);
