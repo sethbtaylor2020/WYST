@@ -38,16 +38,38 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
     checkedIn: false,
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
-    const userId = docRef.id;
+    // Generate the QR code for the check-in URL
+  const signupId = docRef.id;
+  const checkInUrl = `https://wyst-7fe74.web.app/checkin.html?id=${signupId}`;
+
+  QRCode.toDataURL(checkInUrl, async (err, qrDataUrl) => {
+    if (err) {
+      console.error('QR generation failed:', err);
+      return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text("Tour Check-In Ticket", 20, 20);
+
+    doc.setFontSize(12);
+    doc.text(`Name: ${name}`, 20, 40);
+    doc.text(`Tour Time: ${tourTime}`, 20, 50);
+
+    // Add QR code
+    doc.addImage(qrDataUrl, 'PNG', 20, 60, 100, 100);
+
+    // Trigger download
+    doc.save(`${name}-tour-ticket.pdf`);
+  });
+
     alert("Signed up!");
   } catch (err) {
     console.error(err);
     alert("Error signing up.");
   }
-  
-  const checkInUrl = `https://wyst-7fe74.web.app/checkin.html?id=${userId}`;
-  QRCode.toDataURL(checkInUrl, (err, qrCodeDataUrl) => {
-    if (err) return console.error(err);
-    sendEmailWithQRCode(email, qrCodeDataUrl);
-  });
+
 });
+
