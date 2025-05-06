@@ -16,6 +16,24 @@ const firebaseConfig = {
   measurementId: "G-YQ1CYW36WM"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// Form handler
+document.getElementById("signupForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+
+  try {
+    await db.collection("signups").add({
+      name,
+      email,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    alert("Signed up!");
+  } catch (err) {
+    console.error(err);
+    alert("Error signing up.");
+  }
+});
