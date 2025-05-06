@@ -7,9 +7,18 @@
   <form id="signupForm">
     <input type="text" placeholder="Full Name" id="name" required>
     <input type="email" placeholder="Email" id="email" required>
+    <label for="tourTime">Choose a tour time:</label>
+  <select id="tourTime" required>
+    <option value="">--Select a time--</option>
+    <option value="2025-05-10T10:00">May 10 – 10:00 AM</option>
+    <option value="2025-05-10T14:00">May 10 – 2:00 PM</option>
+    <option value="2025-05-11T10:00">May 11 – 10:00 AM</option>
+  </select>
+
     <button type="submit">Sign Up</button>
   </form>
 
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore-compat.js"></script>
   <script src="app.js"></script>

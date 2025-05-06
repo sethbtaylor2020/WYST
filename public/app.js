@@ -24,16 +24,30 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
+  const tourTime = document.getElementById("tourTime").value;
+
+  // Include it in your Firestore document
+  
+
 
   try {
-    await db.collection("signups").add({
-      name,
-      email,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    const docRef = await db.collection("signups").add({
+    name,
+    email,
+    tourTime,
+    checkedIn: false,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
+    const userId = docRef.id;
     alert("Signed up!");
   } catch (err) {
     console.error(err);
     alert("Error signing up.");
   }
+  
+  const checkInUrl = `https://wyst-7fe74.web.app/checkin.html?id=${userId}`;
+  QRCode.toDataURL(checkInUrl, (err, qrCodeDataUrl) => {
+    if (err) return console.error(err);
+    sendEmailWithQRCode(email, qrCodeDataUrl);
+  });
 });

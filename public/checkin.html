@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Check-in</title></head>
+<body>
+  <div id="status">Checking in...</div>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = { /* your config here */ };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (id) {
+      db.collection("signups").doc(id).update({
+        checkedIn: true,
+        checkInTime: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(() => {
+        document.getElementById("status").textContent = "✅ Checked in successfully!";
+      }).catch(err => {
+        document.getElementById("status").textContent = "❌ Error checking in.";
+        console.error(err);
+      });
+    }
+  </script>
+</body>
+</html>
