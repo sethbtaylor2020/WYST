@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tour Signup</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore-compat.js"></script>
-  
 </head>
-<body>
+<body class="bg" style="text-align: center;">
+    <div class="inner-banner">
+      <p>Brigham Young University-Idaho</p>
+    <div class="header1">
+      <h1>New Student Orientation</h1>
+    </div>
+    </div>  
+  <h2 class="header2"></h2>
   <form id="signupForm">
-    <input type="text" placeholder="Full Name" id="name" required>
-    <input type="email" placeholder="Email" id="email" required>
-    <label for="tourTime">Choose a tour time:</label>
-  <select id="tourTime" required>
-    <option value="">--Select a time--</option>
-    <option value="2025-05-10T10:00">May 10 – 10:00 AM</option>
-    <option value="2025-05-10T14:00">May 10 – 2:00 PM</option>
-    <option value="2025-05-11T10:00">May 11 – 10:00 AM</option>
-  </select>
-
-    <button type="submit">Sign Up</button>
+  <div class= "style1">
+    <p class="wysctitle">Walk Your Schedule Tours</p>
+    <div class="inputs">
+      <input class="BYUIfont" type="text" placeholder="Full Name" id="name" required>
+      <input class="BYUIfont" type="email" placeholder="BYU-I Email" id="email" required>
+      <p></p>
+      <div class="inputs">
+        <div class="container"> 
+        <label for="tourTime">Choose a tour time:</label>
+        </div>
+        
+        <select id="tourTime" required>
+        <option value="">--Select a time--</option>
+        <option value="2025-05-10T10:00">May 10 – 10:00 AM</option>
+        <option value="2025-05-10T14:00">May 10 – 2:00 PM</option>
+        <option value="2025-05-11T10:00">May 11 – 10:00 AM</option>
+      </select>
+    </div>
+<p>
+</p>
+    <div class="buttonstyle">
+      <button type="submit">Sign Up</button>
+    </div>
+  </div>
   </form>
+
+  <div>
+   <p> <img src="/htmlpics/byuilogo.png" alt="byuilogoo" class="desktop-only" width="100"> </p>
+  </div>
+
 
   <script src="dapp.js"></script>
 </body>
