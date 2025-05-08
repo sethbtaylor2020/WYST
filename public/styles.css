@@ -1,0 +1,145 @@
+:root {
+    --color: rgb(0, 110, 182);
+}
+
+.style1 {
+    display: inline-flex;                /* shrink-wraps the content */
+    flex-direction: column;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;                       /* optional: spacing inside */
+    border-radius: 6px;                  /* optional: rounded corners */
+    position: relative;
+    top: -10px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+.container {
+    display: flex;
+    justify-content: center;
+    width: 151px;
+    padding: 5px;
+    font-weight: bold;
+    background-color: white;
+}
+.container2 {
+    width: 163px;
+    padding: 5px;
+    font-weight: bold;
+    background-color: white;
+}
+.containerinput {
+    min-width: fit-content;
+}
+.letterbackground {
+    background-color: white; 
+    display: inline;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+.buttonstyle button{
+    display: flex;
+    margin-left: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color);
+    border-radius: 5px;
+    color: white;
+    
+}
+.BYUIfont{
+    font-family: 'Roboto Condensed', sans-serif;
+    
+}
+
+.header1 {
+  color: var(--color); /* ✅ Use var without parentheses */
+  
+}
+
+
+.header2 {
+    display: flex;
+    justify-content: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 600px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.nsopic {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+.wysctitle {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 5px;
+    font-weight: bold;
+    background-color: white;
+}
+.inputs {
+    display: grid;
+    justify-content: center;
+}
+
+.bg {
+    background-image: url('/htmlpics/Blue\ Sky\ Taylor\ Wallpaper_1440x2960.jpg');
+    background-size: cover;         /* scales image to cover entire area */
+    background-position: center;    /* centers the image */
+    background-repeat: no-repeat;   /* prevents tiling */
+    height: 80vh;                  /* full screen height */
+    width: auto;
+  }
+  .h1 {
+    background-color: var(--color);
+    width: 100%;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+
+  }
+  .logo {
+    height: auto;
+    width: 100px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 600px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .outer-banner {
+    background-color: rgb(0, 110, 182);  /* BYU-I Blue */
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    width: fit-content;
+    margin: 40px auto;
+  }
+  
+  .inner-banner {
+    background-color: white;
+    border-radius: 16px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    max-width: 90%;
+    margin: 20px auto;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 600px;
+    font-size: large;
+  }
+  img.desktop-only {
+    display: none; /* Hide by default */
+  }
+  
+  @media (min-width: 769px) {
+    img.desktop-only {
+      display: block; /* Show only on desktop */
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
